@@ -24,10 +24,11 @@
 		while ( $lessons->have_posts() ) {
 			$lessons->the_post();
 			// echo 'On post '. get_the_ID(); 
-			if ( get_field( 'video_url') ) {
+			$video_url = jc_get_source_url( 'acf', 'video_url' );
+			if ( $video_url ) {
 				// echo ' - Video URL: '. get_field( 'video_url');
 				learndash_update_setting( get_the_ID(), 'lesson_video_enabled', 'on' );
-				learndash_update_setting( get_the_ID(), 'lesson_video_url', get_field( 'video_url' ) ); 
+				learndash_update_setting( get_the_ID(), 'lesson_video_url', $video_url ); 
 				learndash_update_setting( get_the_ID(), 'lesson_video_auto_start', true );
 			}
 
@@ -38,3 +39,20 @@
 
 // Only call this once, on activation
 register_activation_hook( __FILE__, 'jc_swap_videos' );
+
+function jc_get_source_url( $method = 'acf', $field_name = 'video_url' ) {
+	switch( $method ) {
+		case 'csv': 
+			// Do something
+			break;
+		case 'meta': 
+			return get_post_meta( get_the_ID(), $field_name );
+			break; // unncessary but standard
+		case 'acf': 
+			return get_field( $field );
+			break;
+		default: 
+			return false;
+	}
+}
+
