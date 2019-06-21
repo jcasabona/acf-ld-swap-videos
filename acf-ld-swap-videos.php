@@ -2,14 +2,13 @@
 
 /**
  * Plugin Name:       Convert ACF Videos to LD Videos
- * Plugin URI:        #
+ * Plugin URI:        https://github.com/jcasabona/acf-ld-swap-videos
  * Description:       A simple plugin to convert an ACF field value to the native LD videos value.
  * Version:           1.0.0
  * Author:            Joe Casabona
  * Author URI:        https:/casabona.org/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       lil-post-types
  * Domain Path:       /languages
  */
 
