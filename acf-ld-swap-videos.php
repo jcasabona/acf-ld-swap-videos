@@ -24,15 +24,15 @@
 	if ( $lessons->have_posts() ) {
 		while ( $lessons->have_posts() ) {
 			$lessons->the_post();
-			echo 'On post '. get_the_ID(); 
+			// echo 'On post '. get_the_ID(); 
 			if ( get_field( 'video_url') ) {
-				echo ' - Video URL: '. get_field( 'video_url');
+				// echo ' - Video URL: '. get_field( 'video_url');
 				learndash_update_setting( get_the_ID(), 'lesson_video_enabled', 'on' );
 				learndash_update_setting( get_the_ID(), 'lesson_video_url', get_field( 'video_url' ) ); 
 				learndash_update_setting( get_the_ID(), 'lesson_video_auto_start', true );
 			}
 
-			echo ' - LD Video URL: ' . learndash_get_setting( get_the_ID(), 'lesson_video_url' ) . ' <br/>';
+			// echo ' - LD Video URL: ' . learndash_get_setting( get_the_ID(), 'lesson_video_url' ) . ' <br/>';
 		}
 	}
 }
